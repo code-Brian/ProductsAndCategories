@@ -20,13 +20,19 @@
 	<div class="container">
 		<div class="row">
 			<div class="navbar">
+				<h1>New Category</h1>
 			</div>
 		</div>
 		<div class="row">
-			<form:form>
+			<div class="col">
+				<p><a href="/">Home</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<form:form action="/category/create" method="POST" modelAttribute="category">
 				<div class="row">
 					<div class="col">
-						<form:label path="name">Name:</form:label>
+						<form:label path="name">Name</form:label>
 						<form:input path="name"/>
 						<form:errors path="name"/>
 					</div>

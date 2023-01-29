@@ -18,7 +18,42 @@
 </head>
 <body>
 	<div class="container">
-		
+		<div class="navbar">
+			<h1>New Product</h1>
+		</div>
+		<div class="row">
+			<div class="col">
+				<p><a href="/">Home</a></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<form:form action="/product/create" method="POST" modelAttribute="product">
+					<div class="row">
+						<div class="col">
+							<form:label path="name">Name</form:label>
+							<form:input path="name"></form:input>
+							<form:errors path="name"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<form:label path="description">Description</form:label>
+							<form:input path="description"></form:input>
+							<form:errors path="description"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<form:label path="price">Price</form:label>
+							<form:input path="price" type="number"></form:input>
+							<form:errors path="price"/>
+						</div>
+					</div>
+					<button class="btn btn-primary">Create Product</button>
+				</form:form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
