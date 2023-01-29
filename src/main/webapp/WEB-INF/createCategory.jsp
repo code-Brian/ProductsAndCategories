@@ -14,42 +14,25 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
 
-<title>Dashboard</title>
+<title>Category | Create</title>
 </head>
 <body>
-	<div class="container p-5">
+	<div class="container">
 		<div class="row">
-			<div class="navbar border-bottom mb-2">
+			<div class="navbar">
+			</div>
+		</div>
+		<div class="row">
+			<form:form>
 				<div class="row">
 					<div class="col">
-						<h1>Home Page</h1>
+						<form:label path="name">Name:</form:label>
+						<form:input path="name"/>
+						<form:errors path="name"/>
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="row border-bottom mb-2">
-			<div class="col">
-				<p><a href="/product/create">New Product</a></p>
-				<p><a href="/category/create">New Category</a></p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<td>Products</td>
-							<td>Categories</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Placeholder Product</td>
-							<td>Placeholder Category</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+				<button class="btn btn-primary">Create Category</button>
+			</form:form>
 		</div>
 	</div>
 </body>
