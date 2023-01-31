@@ -14,9 +14,46 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
 
-<title>Insert title here</title>
+<title>Category | View</title>
 </head>
 <body>
-
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>${category.name}</h1>
+			</div>
+			<div class="row">
+				<div class="col">
+					<p><a href="/">Home</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<h2>Products</h2>
+				<ul>
+					<c:forEach var="product" items="allProducts">
+						<li>${product.name}</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<form:form action="/product/add" method="POST" modelAttribute="product"> 
+					<div class="row">
+						<div class="col">
+							<form:label path="name">Products</form:label>
+							<form:select path="name">
+								<c:forEach var="product" items="allProducts">
+									<form:option path="name" value="${product.name}"/>
+								</c:forEach>
+							</form:select>
+						</div>
+					</div>
+				</form:form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

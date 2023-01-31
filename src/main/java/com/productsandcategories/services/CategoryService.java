@@ -1,5 +1,6 @@
 package com.productsandcategories.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,22 @@ public class CategoryService {
 		} else {
 			return null;
 		}
+	}
+	
+	public List<Category> getAll(){
+		return categoryRepo.getAll();
+	}
+	
+	public Category create(Category c) {
+		return categoryRepo.save(c);
+	}
+	
+	public Category update(Category c) {
+		return categoryRepo.save(c);
+	}
+	
+	public void delete(Long id) {
+		categoryRepo.deleteById(id);
 	}
 
 }
