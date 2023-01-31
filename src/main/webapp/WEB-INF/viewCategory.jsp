@@ -51,6 +51,7 @@
 							</form:select>
 						</div>
 					</div>
+					<button class="btn btn-primary">Add Product</button>
 				</form:form>
 			</div>
 		</div>
