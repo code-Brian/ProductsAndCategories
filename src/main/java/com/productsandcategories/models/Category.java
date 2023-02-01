@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -30,6 +31,9 @@ public class Category {
 	@NotNull
 	@Size(min=3, message="Category name must be at least 3 characters long!")
 	private String name;
+	
+	@OneToMany(mappedBy="categories", fetch=FetchType.LAZY)
+	private List<Product> appendedProducts;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(

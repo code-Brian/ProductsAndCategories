@@ -24,7 +24,7 @@ public class CategoryService {
 	}
 	
 	public List<Category> getAll(){
-		return categoryRepo.getAll();
+		return categoryRepo.findAll();
 	}
 	
 	public Category create(Category c) {

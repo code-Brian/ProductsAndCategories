@@ -32,7 +32,7 @@
 			<div class="col">
 				<h2>Products</h2>
 				<ul>
-					<c:forEach var="product" items="allProducts">
+					<c:forEach var="product" items="allAppendedProducts">
 						<li>${product.name}</li>
 					</c:forEach>
 				</ul>

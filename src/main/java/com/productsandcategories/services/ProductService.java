@@ -24,7 +24,7 @@ public class ProductService {
 	}
 	
 	public List<Product> getAll(){
-		return productRepo.getAll();
+		return productRepo.findAll();
 	}
 	
 	public Product create(Product p) {

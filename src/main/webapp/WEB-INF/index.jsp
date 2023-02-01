@@ -39,14 +39,30 @@
 					<thead>
 						<tr>
 							<td>Products</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="product" items="${allProducts}">
+							<tr>
+								<td><a href="/product/${product.id}/view">${product.name}</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="col">
+				<table class="table table-striped">
+					<thead>
+						<tr>
 							<td>Categories</td>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Placeholder Product</td>
-							<td>Placeholder Category</td>
-						</tr>
+						<c:forEach var="category" items="${allCategories}">
+							<tr>
+								<td><a href="/category/${category.id}/view">${category.name}</a></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>

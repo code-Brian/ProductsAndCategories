@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -40,10 +41,7 @@ public class Product {
 	@NotEmpty
 	private String description;
 	
-	@Min(3)
-	@Max(10)
 	@NotNull
-	@NotEmpty
 	private double price;
 	
 	@ManyToMany(fetch=FetchType.LAZY)
@@ -52,8 +50,10 @@ public class Product {
 		joinColumns = @JoinColumn(name="product_id"),
 		inverseJoinColumns = @JoinColumn(name="category_id")
 	)
-	
 	private List<Category> categories;
+	
+	@OneToMany(mappedBy="products", fetch=FetchType.LAZY)
+	private List<Category> appendedCategories;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(updatable=false)

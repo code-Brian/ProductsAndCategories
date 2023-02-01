@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>${product.name}</h1>
+				<h1><c:out value="${product.name}"/></h1>
 			</div>
 			<div class="row">
 				<div class="col">
@@ -32,7 +32,7 @@
 			<div class="col">
 				<h2>Categories</h2>
 				<ul>
-					<c:forEach var="category" items="allCategories">
+					<c:forEach var="category" items="${allAppendedCategories}">
 						<li>${category.name}</li>
 					</c:forEach>
 				</ul>
@@ -40,12 +40,12 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form:form>
+				<form:form action="/category/add" method="POST" modelAttribute="product">
 					<div class="row">
 						<div class="col">
 							<form:label path="name">Category Name</form:label>
 							<form:select path="name">
-								<c:forEach var="category" items="allCategories">
+								<c:forEach var="category" items="${allCategories}">
 									<form:option path="name" value="${category.name}"/>
 								</c:forEach>
 							</form:select>

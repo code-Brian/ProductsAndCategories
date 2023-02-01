@@ -46,7 +46,7 @@
 					<div class="row">
 						<div class="col">
 							<form:label path="price">Price</form:label>
-							<form:input path="price" type="number"></form:input>
+							<form:input path="price" type="number" step="0.01"></form:input>
 							<form:errors path="price"/>
 						</div>
 					</div>
