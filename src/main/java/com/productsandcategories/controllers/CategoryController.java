@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.productsandcategories.models.Category;
+import com.productsandcategories.models.Product;
 import com.productsandcategories.services.CategoryService;
 import com.productsandcategories.services.ProductService;
 
@@ -46,9 +49,20 @@ public class CategoryController {
 	
 	@GetMapping("/{id}/view")
 	public String readCategory(@PathVariable("id") Long categoryId, Model model) {
+		model.addAttribute("product", new Product());
 		model.addAttribute("category", categoryServ.getOne(categoryId));
-		model.addAttribute("allProducts", productServ.getAll());
-		return "createCategory.jsp";
+		model.addAttribute("assignedProducts", productServ.getAssignedCategories(categoryServ.getOne(categoryId)));
+		model.addAttribute("unassignedProducts", productServ.getUnassignedCategories(categoryServ.getOne(categoryId)));
+		return "viewCategory.jsp";
+	}
+	
+	@PutMapping("/{id}/addProduct")
+	public String addProductToCategory(@PathVariable("id") Long categoryId, Model model, @RequestParam(name="name") Long productId) {
+		Category category = categoryServ.getOne(categoryId);
+		Product product = productServ.getOne(productId);
+		category.getProducts().add(product);
+		categoryServ.update(category);
+		return "redirect:/category/{id}/view";
 	}
 
 }

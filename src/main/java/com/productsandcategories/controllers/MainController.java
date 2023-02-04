@@ -22,4 +22,5 @@ public class MainController {
 		model.addAttribute("allCategories", categoryServ.getAll());
 		return "index.jsp";
 	}
+
 }

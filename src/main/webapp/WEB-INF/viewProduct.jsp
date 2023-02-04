@@ -32,7 +32,7 @@
 			<div class="col">
 				<h2>Categories</h2>
 				<ul>
-					<c:forEach var="category" items="${allAppendedCategories}">
+					<c:forEach var="category" items="${assignedCategories}">
 						<li>${category.name}</li>
 					</c:forEach>
 				</ul>
@@ -40,13 +40,14 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form:form action="/category/add" method="POST" modelAttribute="product">
+				<form:form action="/product/${product.id}/addCategory" method="POST" modelAttribute="product">
+					<input type="hidden" name="_method" value="PUT">
 					<div class="row">
 						<div class="col">
 							<form:label path="name">Category Name</form:label>
-							<form:select path="name">
-								<c:forEach var="category" items="${allCategories}">
-									<form:option path="name" value="${category.name}"/>
+							<form:select path="name" name="categoryId">
+								<c:forEach var="category" items="${unassignedCategories}">
+									<form:option path="name" value="${category.id}">${category.name}</form:option>
 								</c:forEach>
 							</form:select>
 						</div>

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.productsandcategories.models.Category;
 import com.productsandcategories.models.Product;
 import com.productsandcategories.repositories.ProductRepository;
 
@@ -25,6 +26,14 @@ public class ProductService {
 	
 	public List<Product> getAll(){
 		return productRepo.findAll();
+	}
+	
+	public List<Product> getAssignedCategories(Category category){
+		return productRepo.findAllByCategories(category);
+	}
+	
+	public List<Product> getUnassignedCategories(Category category){
+		return productRepo.findByCategoriesNotContains(category);
 	}
 	
 	public Product create(Product p) {
